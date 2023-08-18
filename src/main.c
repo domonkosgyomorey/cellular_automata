@@ -2,13 +2,17 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include "gol.h"
+#include "elementary_ca.h"
 
 Gol_board* board;
+E_CA_board* ca_board;
 int ww = 800, wh = 600;
+int toggle_between_modes = 0;
 
 int main(void){
 
   board = gol_init_board(800, 600);
+  ca_board = init_e_ca_board(80, 60);
 
   if(SDL_Init(SDL_INIT_VIDEO)<0){
     printf("Error init sdl2\n");
@@ -37,16 +41,23 @@ int main(void){
       switch(event.type){
         case SDL_QUIT:
           exit(0);
-        break;
+          break;
+        case SDL_KEYDOWN:
+          toggle_between_modes ^= 1;
+          break;
         default:
           break;
       } 
     }
     SDL_SetRenderDrawColor(renderer, 0, 69, 169, 255);
     SDL_RenderClear(renderer);
-
-    gol_render(renderer, board, ww, wh);
-    gol_update_board(board);
+    if(toggle_between_modes){
+      gol_render(renderer, board, ww, wh);
+      gol_update_board(board);
+    }else{
+      e_ca_render(renderer, ca_board, ww, wh);
+      e_ca_update_board(ca_board);
+    }
 
     SDL_RenderPresent(renderer);
     SDL_Delay(16);
