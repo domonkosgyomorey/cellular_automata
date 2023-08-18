@@ -20,5 +20,5 @@ A simple implementation of cellular automata such as (Conway's Game of Life and 
 ![1D elementary cellular automaton](./img/ECA4.jpg)
 ![2D Conway's Game of Life](/img/GOL.jpg)
 ## References
-[Conway's Game of Life](https://www.en.wikipedia.org/wiki/Conway's_Game_of_Life)
+[Conway's Game of Life](https://www.en.wikipedia.org/wiki/Conway's_Game_of_Life)<br>
 [Elementary cellular automata](https://www.en.wikipedia.org/wiki/Elementary_cellular_automaton)
