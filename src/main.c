@@ -11,8 +11,10 @@ int toggle_between_modes = 0;
 
 int main(void){
 
+  const char rule[8] = {0, 1, 0, 1, 1, 0, 1, 0};
+
   board = gol_init_board(800, 600);
-  ca_board = init_e_ca_board(80, 60);
+  ca_board = init_e_ca_board(800, 600, rule);
 
   if(SDL_Init(SDL_INIT_VIDEO)<0){
     printf("Error init sdl2\n");

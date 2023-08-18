@@ -13,7 +13,7 @@ typedef struct {
   E_CA_cell* board;
 } E_CA_board;
 
-E_CA_board* init_e_ca_board(int w, int h);
+E_CA_board* init_e_ca_board(int w, int h, const char ca_rule[8]);
 void e_ca_update_board(E_CA_board* board_ptr);
 void e_ca_render(SDL_Renderer* renderer, E_CA_board* board, int ww, int wh);
 

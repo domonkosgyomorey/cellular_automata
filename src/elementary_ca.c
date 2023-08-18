@@ -3,9 +3,9 @@
 #include <time.h>
 #include <SDL2/SDL.h>
 
-const char rule[8] = {0, 1, 1, 1, 1, 0, 0, 0};
+char rule[8] = {0, 1, 1, 1, 1, 0, 0, 0};
 
-E_CA_board* init_e_ca_board(int w, int h){
+E_CA_board* init_e_ca_board(int w, int h, const char ca_rule[8]){
   E_CA_board* board_ptr = (E_CA_board*)malloc(sizeof(E_CA_board));
   board_ptr->w = w;
   board_ptr->h = h;
@@ -13,9 +13,14 @@ E_CA_board* init_e_ca_board(int w, int h){
   board_ptr->board = (E_CA_cell*)malloc(sizeof(E_CA_cell)*w*h);
   srand(time(0));
   for(int i = 0; i < w; ++i){
-    //board_ptr->board[i] = (E_CA_cell)(rand()%2);
+   // board_ptr->board[i] = (E_CA_cell)(rand()%2);
   }
   board_ptr->board[w/2] = CA_ALIVE;
+  
+  for(int i = 0; i < 8; ++i){
+    rule[i] = ca_rule[i];
+  }
+
   return board_ptr;
 }
 
